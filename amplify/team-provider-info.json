@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-shareprice-dev-151433-authRole",
+            "UnauthRoleArn": "arn:aws:iam::298954621851:role/amplify-shareprice-dev-151433-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::298954621851:role/amplify-shareprice-dev-151433-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-shareprice-dev-151433-deployment",
+            "UnauthRoleName": "amplify-shareprice-dev-151433-unauthRole",
+            "StackName": "amplify-shareprice-dev-151433",
+            "StackId": "arn:aws:cloudformation:us-east-1:298954621851:stack/amplify-shareprice-dev-151433/d2aa3150-5646-11ea-adcc-12bdd946785e",
+            "AmplifyAppId": "d1d5ctdnhkjhrx"
+        },
+        "categories": {
+            "auth": {
+                "sharepricecc2971e7": {}
+            }
+        }
+    }
+}
