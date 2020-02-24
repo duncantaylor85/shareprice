@@ -5,8 +5,9 @@
     <amplify-sign-out></amplify-sign-out>
     <div>
       <h1>Share Prices</h1>
-      <button @click="showJoke()">Show Joke</button>
+      <button @click="showInfo()">Show Info</button>
       <div v-if="info">
+        <Chart :dates="this.dates" :close="this.close" :prices="this.prices" />
         <p>{{info}}</p>
       </div>
     </div>
@@ -15,17 +16,21 @@
 
 <script>
 import { AmplifyEventBus } from "aws-amplify-vue";
+import Chart from "../components/Chart.vue";
 
 // @ is an alias to /src
 
 export default {
   data() {
     return {
-      info: ""
+      info: "",
+      dates: [],
+      close: [],
+      prices: []
     };
   },
   methods: {
-    async showJoke() {
+    async showInfo() {
       let config = {
         headers: {
           Accept: "application/json"
@@ -37,14 +42,11 @@ export default {
           config
         )
         .then(response => (this.info = response.data["Weekly Time Series"]));
-      let dates = [];
-      let value = "";
       let i = 0;
       for (let key in this.info) {
-        dates.push(key);
-        value = this.info[key]["4. close"];
-        console.log(key);
-        console.log(value);
+        this.dates.push(key);
+        this.prices.push(this.info[key]);
+        this.close.push(this.info[key]["4. close"]);
         i++;
         if (i > 9) {
           break;
@@ -61,6 +63,6 @@ export default {
     });
   },
   name: "About",
-  components: {}
+  components: { Chart }
 };
 </script>
