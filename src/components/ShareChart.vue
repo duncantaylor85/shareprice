@@ -1,5 +1,8 @@
 <template>
-  <Plotly :data="data" :layout="layout" :display-mode-bar="false"></Plotly>
+  <div class="sharechart">
+    <h1>{{ title }}</h1>
+    <Plotly :data="data" :layout="layout" :display-mode-bar="false"></Plotly>
+  </div>
 </template>
 
 <script>
@@ -9,6 +12,7 @@ export default {
   data() {
     return {
       info: "",
+      title: "",
       data: [
         {
           x: [],
@@ -23,12 +27,14 @@ export default {
         }
       ],
       layout: {
-        title: "MSFT"
+        title: "MSFT",
+        paper_bgcolor: "rgb(224, 224, 209)",
+        plot_bgcolor: "rgb(224, 224, 209)"
       }
     };
   },
   methods: {
-    async showInfo() {
+    async fetchStockData() {
       let config = {
         headers: {
           Accept: "application/json"
@@ -64,7 +70,7 @@ export default {
     }
   },
   mounted() {
-    this.showInfo();
+    this.fetchStockData();
   },
 
   name: "ShareChart",

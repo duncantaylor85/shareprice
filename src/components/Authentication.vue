@@ -13,6 +13,7 @@
 import { Auth } from "aws-amplify";
 import { AmplifyEventBus } from "aws-amplify-vue";
 import VueRouter from "vue-router";
+
 export default {
   name: "Authentication",
   data() {
