@@ -1,23 +1,16 @@
 <template>
   <div class="home">
-    <amplify-authenticator></amplify-authenticator>
+    <Authentication />
   </div>
 </template>
 
 <script>
-import { AmplifyEventBus } from "aws-amplify-vue";
-// @ is an alias to /src
+import Authentication from "@/components/Authentication.vue";
 
 export default {
-  mounted() {
-    AmplifyEventBus.$on("authState", info => {
-      console.log("auth", info);
-      if (info === "signedIn") {
-        this.$router.push("about");
-      }
-    });
-  },
   name: "Home",
-  components: {}
+  components: {
+    Authentication
+  }
 };
 </script>
