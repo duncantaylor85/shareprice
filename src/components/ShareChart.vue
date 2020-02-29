@@ -40,24 +40,19 @@ export default {
           Accept: "application/json"
         }
       };
-      await this.$http
-        .get(
-          "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=MSFT&apikey=demo",
-          config
-        )
-        .then(response => (this.info = response.data["Weekly Time Series"]));
-      let i = 0;
+      const response = await this.$http.get(
+        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=MSFT&apikey=demo",
+        config
+      );
+      this.info = response.data["Weekly Time Series"];
       let stockChartXValues = [];
       let stockChartYValues = [];
-      for (let key in this.info) {
-        stockChartXValues.push(key);
-        stockChartYValues.push(this.info[key]["4. close"]);
+      stockChartXValues = Object.keys(this.info).slice(0, 100);
 
-        i++;
-        if (i > 99) {
-          break;
-        }
-      }
+      stockChartXValues.forEach(key =>
+        stockChartYValues.push(this.info[key]["4. close"])
+      );
+
       this.data.push({
         x: stockChartXValues,
         y: stockChartYValues,
