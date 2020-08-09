@@ -15,6 +15,6 @@ import ShareChart from "../components/ShareChart.vue";
 
 export default {
   name: "Portfolio",
-  components: { ShareChart },
+  components: { ShareChart }
 };
 </script>

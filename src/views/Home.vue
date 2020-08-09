@@ -16,7 +16,7 @@ import Authentication from "@/components/Authentication.vue";
 export default {
   name: "Home",
   components: {
-    Authentication,
-  },
+    Authentication
+  }
 };
 </script>
