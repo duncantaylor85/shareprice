@@ -47,7 +47,6 @@ export default {
       this.info = response.data["Weekly Time Series"];
       let stockChartYValues = [];
       const stockChartXValues = Object.keys(this.info).slice(0, 100);
-
       stockChartXValues.forEach(key =>
         stockChartYValues.push(this.info[key]["4. close"])
       );

@@ -5,7 +5,6 @@ import Portfolio from "@/views/Portfolio.vue";
 
 Vue.use(VueRouter);
 
-
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
@@ -27,14 +26,16 @@ const router = new VueRouter({
 router.beforeResolve((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     let user;
-    Vue.prototype.$Amplify.Auth.currentAuthenticatedUser().then((data) => {
-      if (data && data.signInUserSession) {
-        user = data;
-        next()
-      }
-    }).catch((e) => {
-      console.log(e)
-    });
+    Vue.prototype.$Amplify.Auth.currentAuthenticatedUser()
+      .then(data => {
+        if (data && data.signInUserSession) {
+          user = data;
+          next();
+        }
+      })
+      .catch(e => {
+        console.log(e);
+      });
     if (!user) {
       next({ path: "/" });
     } else {
