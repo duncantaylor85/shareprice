@@ -1,6 +1,12 @@
 <template>
   <div class="home">
-    <Authentication />
+    <v-row class="d-flex justify-center">
+      <v-col>
+        <div class="text-center">
+          <Authentication />
+        </div>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -10,7 +16,7 @@ import Authentication from "@/components/Authentication.vue";
 export default {
   name: "Home",
   components: {
-    Authentication
-  }
+    Authentication,
+  },
 };
 </script>

@@ -1,15 +1,10 @@
 <template>
   <div class="portfolio">
-    <h1>Portfolio</h1>
-
-    <div>
-      <h2>Share Prices</h2>
-
-      <div>
-        <ShareChart></ShareChart>
-      </div>
-    </div>
-    <amplify-sign-out></amplify-sign-out>
+    <v-container>
+      <h1 class="text-center mb-4">Share Prices</h1>
+      <ShareChart></ShareChart>
+      <amplify-sign-out class="text-center"></amplify-sign-out>
+    </v-container>
   </div>
 </template>
 
@@ -20,6 +15,6 @@ import ShareChart from "../components/ShareChart.vue";
 
 export default {
   name: "Portfolio",
-  components: { ShareChart }
+  components: { ShareChart },
 };
 </script>
